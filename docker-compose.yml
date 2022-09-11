@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: mysql
+    volumes:
+      - feed_master-db:/var/lib/mysql
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    security_opt:
+      - label=type:container_runtime_t
+
+volumes:
+  feed_master-db:
+    external: true
