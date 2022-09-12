@@ -13,7 +13,7 @@ services:
   db:
     image: mysql
     volumes:
-      - feed_master-db:/var/lib/mysql
+      - feedmaster-db:/var/lib/mysql
     env_file:
       - .env
     ports:
@@ -22,5 +22,5 @@ services:
       - label=type:container_runtime_t
 
 volumes:
-  feed_master-db:
+  feedmaster-db:
     external: true
